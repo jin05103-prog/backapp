@@ -101,6 +101,18 @@ class S3Service:
         return f"https://{AWS_S3_BUCKET}.s3.{AWS_REGION}.amazonaws.com/{key}"
 
 
+    # 화면 표시용 서명 URL (비공개 버킷의 파일을 만료 시간 동안만 읽을 수 있다)
+    async def get_view_url(self, key: str, expires_in: int = 3600) -> str:
+        return await self.s3_client.generate_presigned_url(
+            "get_object",
+            Params={
+                "Bucket": AWS_S3_BUCKET,
+                "Key": key
+            },
+            ExpiresIn=expires_in
+        )
+
+
     # 3. 이미지 삭제
     async def delete_file(self, key):
         await self.s3_client.delete_object(

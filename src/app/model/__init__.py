@@ -19,4 +19,6 @@ from .hospital_model import Hospital
 from .reservation_model import Reservation
 from .order_model import Order
 from .product_model import Product
-from .post_extra_model import PostExtra, PostPhoto, PostPollVote
+from .post_extra_model import (
+    PostExtra, PostPhoto, PostVideo, PostPlaceCoord, PostPollSetting, PostLike, PostStat, PostPollVote, PostPollExtraChoice,
+)

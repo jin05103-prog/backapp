@@ -1,10 +1,11 @@
 from enum import Enum
 
-# 게시 상태 (ERD: 게시중, 게시 완료, 게시 불가)
+# 게시 상태 (ERD: 게시중, 게시 완료, 게시 불가, 삭제)
 class PostStatus(str, Enum):
     POSTING = "POSTING"
     COMPLETED = "COMPLETED"
     BLOCKED = "BLOCKED"
+    DELETED = "DELETED"  # 작성자가 삭제한 글
 
 # 작성자 타입 (ERD: 보호자, 예비맘, 육아맘)
 class PostWriterType(str, Enum):

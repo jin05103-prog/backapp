@@ -19,7 +19,7 @@ class Post(Base):
     post_category: Mapped[str] = mapped_column(String(40), nullable=False)  # 카테고리
     post_title: Mapped[str] = mapped_column(String(200), nullable=False)  # 제목
     post_content: Mapped[str] = mapped_column(Text, nullable=False)  # 내용
-    post_status: Mapped[str] = mapped_column(String(40), nullable=False)  # 게시 상태 (게시중, 게시 완료, 게시 불가)
+    post_status: Mapped[str] = mapped_column(String(40), nullable=False)  # 게시 상태 (게시중, 게시 완료, 게시 불가, 삭제)
     post_created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=lambda: datetime.now(KST))  # 작성 일시
     post_updated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))  # 수정 일시
     post_like: Mapped[int] = mapped_column(BigInteger, nullable=False, default=0)  # 좋아요 수

@@ -12,6 +12,10 @@ class RedisRepository:
     async def set(self, key: str, value: str, ex: int = 3600) -> None:
         await self.redis_client.set(key, value, ex)
 
+    # 키가 없을 때만 저장한다. 새로 저장했으면 True
+    async def set_if_absent(self, key: str, value: str, ex: int = 3600) -> bool:
+        return bool(await self.redis_client.set(key, value, ex=ex, nx=True))
+
     async def get(self, key: str) -> str | None:
         return await self.redis_client.get(key)
 
